@@ -67,6 +67,10 @@ const LoginScreen = () => {
   return (
     <div className="container__login">
       <div className='container__form'>
+        <div className='logotipo'>
+          <h1 className='logotipo__title'>MS</h1>
+          <span className='logotipo__span'>SKIN STUDIO</span>
+        </div>
         <h1 className='login__title'>Iniciar sesión</h1>
         <form className='login__form' onSubmit={handleSubmit}>
           <div className="form__field">
