@@ -4,11 +4,12 @@ import { login } from '../../services/authService'
 import useForm from '../../hooks/useForm'
 import useFetch from '../../hooks/useFetch'
 import { AuthContext } from '../../Context/AuthContext'
+import '../../styles/LoginScreen.css'
 
 const LoginScreen = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const {onLogin} = useContext(AuthContext)
+  const { onLogin } = useContext(AuthContext)
   useEffect(
     () => {
       const query = new URLSearchParams(location.search)
@@ -19,61 +20,63 @@ const LoginScreen = () => {
     },
     [] //Solo queremos que se ejecute cuando se monte el componente
   )
-  
+
 
   const LOGIN_FORM_FIELDS = {
-        EMAIL: 'email',
-        PASSWORD: 'password'
-    }
+    EMAIL: 'email',
+    PASSWORD: 'password'
+  }
 
-    const initial_form_state = {
-        [LOGIN_FORM_FIELDS.EMAIL]: '',
-        [LOGIN_FORM_FIELDS.PASSWORD]: ''
-    }
+  const initial_form_state = {
+    [LOGIN_FORM_FIELDS.EMAIL]: '',
+    [LOGIN_FORM_FIELDS.PASSWORD]: ''
+  }
 
-    const { response, error, loading, sendRequest, resetResponse } = useFetch()
+  const { response, error, loading, sendRequest, resetResponse } = useFetch()
 
-    function handleLogin(form_state_sent) {
-        resetResponse()
-        sendRequest(
-            () => {
-                return login(
-                    form_state_sent[LOGIN_FORM_FIELDS.EMAIL],
-                    form_state_sent[LOGIN_FORM_FIELDS.PASSWORD]
-                )
-            }
+  function handleLogin(form_state_sent) {
+    resetResponse()
+    sendRequest(
+      () => {
+        return login(
+          form_state_sent[LOGIN_FORM_FIELDS.EMAIL],
+          form_state_sent[LOGIN_FORM_FIELDS.PASSWORD]
         )
-    }
-
-    const {
-        form_state,
-        onInputChange,
-        handleSubmit,
-        resetForm
-    } = useForm(initial_form_state, handleLogin)
-
-    useEffect(
-        () => {
-          if(response && response.ok){
-            //Queremos que persista en memoria el auth token
-            //Dejamos que el context se encargue de que sucedera
-            onLogin(response.body.auth_token)
-            
-          }
-        },
-        [response]
+      }
     )
+  }
+
+  const {
+    form_state,
+    onInputChange,
+    handleSubmit,
+    resetForm
+  } = useForm(initial_form_state, handleLogin)
+
+  useEffect(
+    () => {
+      if (response && response.ok) {
+        //Queremos que persista en memoria el auth token
+        //Dejamos que el context se encargue de que sucedera
+        onLogin(response.body.auth_token)
+
+      }
+    },
+    [response]
+  )
   return (
-      <div className="Form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-field">
+    <div className="container__login">
+      <div className='container__form'>
+        <h1 className='login__title'>Iniciar sesión</h1>
+        <form className='login__form' onSubmit={handleSubmit}>
+          <div className="form__field">
             <label htmlFor="email">Email: </label>
-            <input  type="text" placeholder="jose@algo.com" value={form_state[LOGIN_FORM_FIELDS.EMAIL]} name={LOGIN_FORM_FIELDS.EMAIL} onChange={onInputChange} id={'email'} />
+            <input className='form__input' type="text" placeholder="tucorreo@mail.com" value={form_state[LOGIN_FORM_FIELDS.EMAIL]} name={LOGIN_FORM_FIELDS.EMAIL} onChange={onInputChange} id={'email'} />
           </div>
 
-          <div>
+          <div className='form__field'>
             <label htmlFor="password">Password: </label>
-            <input type="text" placeholder="Josesito206" value={form_state[LOGIN_FORM_FIELDS.PASSWORD]} name={LOGIN_FORM_FIELDS.PASSWORD} onChange={onInputChange} id={'password'} />
+            <input className='form__input' type="password" placeholder="Ingresa tu contraseña" value={form_state[LOGIN_FORM_FIELDS.PASSWORD]} name={LOGIN_FORM_FIELDS.PASSWORD} onChange={onInputChange} id={'password'} />
           </div>
 
           {error && <span style={{ color: 'red' }}> {error} </span>}
@@ -82,11 +85,12 @@ const LoginScreen = () => {
           {
             loading
               ? <button disabled>Loggin In</button>
-              : <button>Login</button>
+              : <button className='button__form'>Iniciar sesión</button>
           }
         </form>
       </div>
-      )
+    </div>
+  )
 }
 
-      export default LoginScreen
+export default LoginScreen
