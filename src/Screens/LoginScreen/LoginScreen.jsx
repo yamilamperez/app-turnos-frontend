@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation, useNavigate, Link } from 'react-router'
 import { login } from '../../services/authService'
 import useForm from '../../hooks/useForm'
 import useFetch from '../../hooks/useFetch'
@@ -91,6 +91,7 @@ const LoginScreen = () => {
               ? <button disabled>Loggin In</button>
               : <button className='button__form'>Iniciar sesión</button>
           }
+          <span className='span__create__account'>¿Aún no tenés una cuenta?</span> <Link to="/register" className='link__create__account'>Regístrate</Link>
         </form>
       </div>
     </div>

@@ -4,6 +4,7 @@ import useForm from "../../hooks/useForm";
 import register from "../../services/authService";
 import useFetch from "../../hooks/useFetch";
 import '../../styles/RegisterScreen.css'
+import { Link } from "react-router";
 
 const RegisterScreen = () => {
 
@@ -100,6 +101,7 @@ const RegisterScreen = () => {
                     }
                     {error && <span style={{ color: 'red' }}>{error}</span>}
                     {response && <span style={{ color: 'green' }}>Usuario registrado con éxito.</span>}
+                    <span className='span__create__account'>¿Ya tenés cuenta?</span> <Link to="/login" className='link__create__account'>Iniciar sesión</Link>
                 </form>
             </div>
         </div>
