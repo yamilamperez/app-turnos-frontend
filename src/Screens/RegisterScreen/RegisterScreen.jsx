@@ -78,7 +78,7 @@ useEffect(() => {
                         id={"email"}
                         />  
                     </div>
-                    <div className="form_field">
+                    <div className="form__field">
                         <label htmlFor="password">Contraseña:</label>
                         <input
                         className="form__input" 

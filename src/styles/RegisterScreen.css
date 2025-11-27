@@ -9,6 +9,8 @@
 :root {
     --font-family: 'Bricolage Grotesque', sans-serif;
     --body-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --title-font-size: 2rem;
     --bg-color: #FFEBE7;
     --font-color: #18161a;
     --bg-button-color: #9667ae;
@@ -23,7 +25,6 @@ align-items: center;
 justify-content: center;
 height: 100vh;
 background-color: var(--bg-color);
-font-size: var(--body-font-size);
 }
 
 .container__form {
@@ -41,15 +42,13 @@ font-size: var(--body-font-size);
 
 .register__title {
     padding-bottom: 5vh;
-    font-size: 2rem;
+    font-size: var(--title-font-size);
 }
 
 .register__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1vh;
-    
 }
 
 .button__form {
@@ -62,20 +61,26 @@ font-size: var(--body-font-size);
     cursor: pointer;
 }
 
-.button__form :hover {
+.button__form:hover {
     background-color: var(--bg-button-color-hover);
-    font-style: italic;
+    transition: background-color 0.3s ease;
 }
 
 .form__field {
     display: flex;
     justify-content: start;
-    width: 100%;
+    align-items: center;
     gap: 10px;
     padding-bottom: 5px;
-    font-size: 0.875rem;
+    font-size: var(--small-font-size);
+}
+
+.form__field label {
+    width: 100%;
 }
 
 .form__input {
-    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--font-color);
 }
