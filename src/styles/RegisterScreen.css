@@ -1,0 +1,81 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+:root {
+    --font-family: 'Bricolage Grotesque', sans-serif;
+    --body-font-size: 1rem;
+    --bg-color: #FFEBE7;
+    --font-color: #18161a;
+    --bg-button-color: #9667ae;
+    --bg-button-color-hover: #3c2d43;
+    --button-font-color: #FFFFFF;
+}
+
+.container__register {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+background-color: var(--bg-color);
+font-size: var(--body-font-size);
+}
+
+.container__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #fff9f8;
+    border-radius: 5%;
+}
+
+.register__title {
+    padding-bottom: 5vh;
+    font-size: 2rem;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1vh;
+    
+}
+
+.button__form {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--bg-button-color);
+    border-radius: 10px;
+    color: var(--button-font-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button__form :hover {
+    background-color: var(--bg-button-color-hover);
+    font-style: italic;
+}
+
+.form__field {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+    padding-bottom: 5px;
+    font-size: 0.875rem;
+}
+
+.form__input {
+    width: 100%;
+}
