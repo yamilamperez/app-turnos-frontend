@@ -7,6 +7,8 @@ import '../../styles/RegisterScreen.css'
 import { Link } from "react-router";
 
 const RegisterScreen = () => {
+console.log('VITE_APP_API_URL:', import.meta.env.VITE_APP_API_URL)
+
 
     const REGISTER_FORM_FIELDS = {
         NAME: 'name',
